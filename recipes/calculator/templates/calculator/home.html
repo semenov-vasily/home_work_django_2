@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 style="color: blue">{{ title }}</h1>
+
+{% for i in page %}
+{% for dish, ingredients in i.items %}
+<a style="color: green; font-size: 25px" href='{{ dish }}'>{{ dish }}</a>
+{% for ingr, quantity in ingredients.items %}
+<li>{{ ingr }}: {{ quantity }}</li>
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+{% if page.has_previous %}
+<a href="?page={{page.previous_page_number}}" style="color: red; font-size: 20px">Назад</a>
+{% endif %}
+
+{% if page.has_next %}
+<a href="?page={{page.next_page_number}}" style="color: red; font-size: 20px">Вперед</a>
+{% endif %}
+
+</body>
+</html>
